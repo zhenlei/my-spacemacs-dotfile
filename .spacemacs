@@ -405,8 +405,8 @@ you should place your code here."
   (setq org-enforce-todo-dependencies t)
   ;; if org-use-sub-superscripts is t, export will escape _,^. below disable it.
   (setq-default org-export-with-sub-superscripts nil)
-  ;; treat the _ character as a word constituent
-  (modify-syntax-entry ?_ "w")
+  ;; treat the _ character as a word constituent in program language mode
+  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   ;; For python
   (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   ;; (add-hook 'python-mode-hook
